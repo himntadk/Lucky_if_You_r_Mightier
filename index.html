@@ -202,15 +202,15 @@
             function finalMessage([yourscore,botscore]){
                 if(yourscore===0){
                     document.getElementById("Yscore").textContent="Oh No! Your Selection is less poweful than that selected by Computer.Better Luck Next Time!"
-                    return {"message": "you lose!","color": "red"};
+                    return {"message": "You Lose!","color": "red"};
                 }
                 else if(yourscore===0.5){
                     document.getElementById("Yscore").textContent="You tied! Selections are equivalent!"
-                    return {"message": "you tied!","color": "yellow"}; 
+                    return {"message": "You Tied!","color": "yellow"}; 
                 }
                 else if(yourscore===1){
                     document.getElementById("Yscore").textContent="Congratulations! You win, You chose quite well!"
-                    return {"message": "you won!","color": "green"};
+                    return {"message": "You Won!","color": "green"};
                 }
             }
             function imageDisplay(humanImage,botImage,finalmsg){
