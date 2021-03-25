@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title></title>
+    </head>
+    <style>
+        body{
+            background-image: linear-gradient(to right, rgb(11, 68, 11), white);
+        }
+        .whole{
+            display:block;
+        }
+        #container{
+            display:flex;
+            float:left;
+            text-align: center;
+            margin-top: 100px;
+        }
+        img{
+            margin-left:100px;
+            box-shadow:0 0 15px black;
+            cursor: pointer;
+            transition: 1s;
+        }
+        img:hover{
+            transform: scale(1.5);
+        }
+        .mant{
+            margin-left:80px;
+            margin-top: 70px;
+        }
+        ul li a span{
+            padding:0;
+            margin:0;
+            position:absolute;
+            top: 30px;
+            color:rgb(245, 214, 214);
+            letter-spacing: 4px;
+            transition:0.5s;
+        }
+        ul li a
+        {
+            text-decoration:none;
+            display:absolute;
+            display:block;
+            width:210px;
+            height:80px;
+            background: rgb(160, 160, 233);
+            text-orientation: initial;
+            text-align:left;
+            transform: rotate(-20deg) skew(25deg) translate(0,0);
+            transition:0.5s;
+            box-shadow: -20px 20px 10px rgba(21, 3, 51, 0.7);
+        }
+        ul li a:before
+        {
+            content:'';
+            position:absolute;
+            top:10px;
+            left:-20px;
+            height:100%;
+            width:20px;
+            background: #3957aa;
+            transform:0.5s;
+            transform:rotate(0deg) skewY(-45deg);
+        }
+        ul li a:after
+        {
+            content:'';
+            position:absolute;
+            bottom:-20px;
+            left:-10.5px;
+            height:20px;
+            width:100%;
+            background: #3957aa;
+            transform:0.5s;
+            transform:rotate(0deg) skewX(-45deg);
+        }
+        ul li a:hover{
+            transform: rotate(-30deg) skew(25deg) translate(20px,-25px);
+            box-shadow:-30px 30px 30px rgba(21, 3, 51, 0.7);
+        }
+        #rule_but{
+            margin-left:30px;
+            margin-top:20px;
+            color:rgb(16, 63, 45);
+            font-family:'Times New Roman';
+            font-weight:inherit;
+            font-size: initial;
+        }
+        #score_but{
+            margin-left:30px;
+            margin-top:20px;
+            color:rgb(16, 63, 45);
+            font-family:'Times New Roman';
+            font-weight:inherit;
+            font-size: initial;
+        }
+        #rule{
+            font-family: 'Bell MT';
+            margin-left: 30px;
+        }
+        #Yscore{
+            font-family: 'Bell MT';
+            margin-left: 30px;
+            margin-top: 4px;
+            color:rgb(40, 41, 37);
+        }
+        .fa{
+            width:20px;
+            height:20px;
+        }
+        @media only screen and (max-width: 1000px){
+            #container{
+               display: block;
+            }
+            .mant{
+            margin-left:0px;
+            margin-top: 50px;
+        }
+        }
+    </style>
+    <body>
+        <button type="button" id="rule_but" class="btn btn-warning">Wrap Up</button>
+        <div id="rule"><p><h3>It is a game based on your luck.</h3></p>
+            <p><h4>You have to choose any of the three powers,i.e Tiger, Parachute or Bird</h4></p>
+            <p><h4><i class="fas fa-theater-masks"></i> If you Choose Tiger, Bird is the lowest power and Parachute is the highest.</h4></p>
+            <p><h4><i class="fas fa-theater-masks"></i>If you Choose Parachute, Tiger is the lowest power and Bird is the highest.</h4></p>
+            <p><h4><i class="fas fa-theater-masks"></i>If you Choose Bird, Parachute is the lowest power and Tiger is the highest.</h4></p></div>
+            <button type="button" id="score_but" class="btn btn-info">Status</button>
+            <h4 id="Yscore">You have to choose any of the three! Hope you are Lucky!</h4>
+            <p> <div id="container">
+         <img src="AuburnBalloons_EN-US8649124966_1366x768.jpg" id="parachute" alt="" height=150 width=150 name="parachuite" onclick="rps(this)">
+         <img src="CheetahMom_EN-US10122059369_1366x768.jpg" id="tiger" alt="" height=150 width=150 name="tiger" onclick="rps(this)">
+         <img src="HeartCranes_EN-US4166665260_1366x768.jpg" id="bird" alt="" height=150 width=150 name="bird" onclick="rps(this)">
+        
+        <div class="mant">
+       <ul>
+           <li>
+               <div id="gap">
+               <a href="#">
+                   <span>Play Again</span>
+               </a>
+               </div>
+           </li>
+       </ul>
+       </div>
+       </div></p>
+        <script>
+            document.getElementById("rule_but").onclick=()=>{
+                var x = document.getElementById("rule");
+                  if (x.style.display === "none") {
+                       x.style.display = "block";
+                       document.getElementById("rule_but").textContent="Wrap Up";
+                      } 
+                      else {
+                      x.style.display = "none";
+                      document.getElementById("rule_but").textContent="View Rules";
+                 }
+            }
+            document.getElementById("score_but").onclick=()=>{
+                var x = document.getElementById("Yscore");
+                  if (x.style.display === "none") {
+                       x.style.display = "block";
+                       document.getElementById("score_but").textContent="Status";
+                      } 
+                      else {
+                      x.style.display = "none";
+                      document.getElementById("score_but").textContent="View Status";
+                 }
+            }
+            function rps(yourchoice){
+                console.log(yourchoice);
+                var humanchoice = yourchoice.id;
+                var botchoice= numtoname(random());
+                console.log("compChoice:",botchoice);
+                var result= decideWinner(humanchoice,botchoice);
+                console.log(result);
+                var info= finalMessage(result);
+                console.log(info);
+                imageDisplay(yourchoice.id,botchoice,info);
+
+            } 
+            function random(){
+                return Math.floor(Math.random() * 3);
+            }
+            function numtoname(number){
+                return ["parachute","tiger","bird"][number];
+            }
+            function decideWinner(humanchoice,botchoice){
+                var rpsk={
+                "parachute":{"parachute":0.5,"tiger":0,"bird":1},
+                "tiger":{"parachute":1,"tiger":0.5,"bird":0},
+                "bird":{"parachute":0,"tiger":1,"bird":0.5}
+                };
+                var yourscore= rpsk[humanchoice][botchoice];
+                var botscore= rpsk[botchoice][humanchoice];
+                return [yourscore,botscore];
+            }
+            function finalMessage([yourscore,botscore]){
+                if(yourscore===0){
+                    document.getElementById("Yscore").textContent="Oh No! Your Selection is less poweful than that selected by Computer.Better Luck Next Time!"
+                    return {"message": "you lose!","color": "red"};
+                }
+                else if(yourscore===0.5){
+                    document.getElementById("Yscore").textContent="You tied! Selections are equivalent!"
+                    return {"message": "you tied!","color": "yellow"}; 
+                }
+                else if(yourscore===1){
+                    document.getElementById("Yscore").textContent="Congratulations! You win, You chose quite well!"
+                    return {"message": "you won!","color": "green"};
+                }
+            }
+            function imageDisplay(humanImage,botImage,finalmsg){
+                var database= {
+                    "parachute": document.getElementById("parachute").src,
+                    "tiger": document.getElementById("tiger").src,
+                    "bird": document.getElementById("bird").src
+                }
+                document.getElementById("parachute").remove();
+                document.getElementById("tiger").remove();
+                document.getElementById("bird").remove();
+              var humandiv= document.createElement("div");
+              var botdiv= document.createElement("div");
+              var messagediv= document.createElement("div");
+              humandiv.innerHTML = "<img src='" + database[humanImage] + "' height=150 width=150 style='box-shadow:0 0 10 blue' >";
+              messagediv.innerHTML= "<h2 style='color:"+ finalmsg['color'] + ";font-size:60px;font-family:cursive; padding-left:80px;'>" + finalmsg['message'] + "</h2>";
+              botdiv.innerHTML = "<img src='" + database[botImage] + "' height=150 width=150 style='box-shadow:0 0 10 red' >";
+              document.getElementById("container").appendChild(humandiv);
+              document.getElementById("container").appendChild(messagediv);
+              document.getElementById("container").appendChild(botdiv);
+            }
+            document.getElementById("gap").onclick=()=>{
+                confirm("Want to choose again?");
+                location.reload();
+            }
+        </script>
+    </body>
+</html>
